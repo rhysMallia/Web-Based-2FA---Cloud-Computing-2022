@@ -1,0 +1,48 @@
+{
+  "name": "metagotchi",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.1116.0",
+    "axios": "^0.26.1",
+    "classnames": "^2.2.6",
+    "express": "^4.17.3",
+    "lodash": "^4.17.15",
+    "react": "^16.13.1",
+    "react-device-detect": "^2.1.2",
+    "react-dom": "^16.13.1",
+    "react-ga": "^2.7.0",
+    "react-player": "^2.10.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
+    "sass": "^1.49.7",
+    "serverless": "^3.14.0",
+    "web3": "^1.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rhysMallia/MetagotchisWeb"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://mymetagotchi",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

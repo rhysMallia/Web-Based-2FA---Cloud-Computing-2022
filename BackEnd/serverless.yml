@@ -1,0 +1,81 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: BotDeploy
+
+frameworkVersion: '3'
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-southeast-2
+  environment:
+    TABLE_NAME:
+      Ref: Users
+
+# Lambda Permissions
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+      - "secretsmanager:GetSecretValue"
+      Resource: 
+      - "arn:aws:secretsmanager:ap-southeast-2:463581045171:secret:bot-3TREVf"
+    - Effect: "Allow"
+      Action:
+      - dynamodb:DescribeTable
+      - dynamodb:Query
+      - dynamodb:Scan
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:UpdateItem
+      - dynamodb:DeleteItem
+      Resource:
+      - "Fn::GetAtt": [Users, Arn]
+
+# The `functions` block defines what code to deploy
+functions:
+  verify:
+    handler: verify/verify.handler
+    memorySize: 128
+    events:
+      - http:
+          path: /verify
+          method: post
+          cors: true
+  register:
+    handler: register/register.handler
+    memorySize: 256
+    events:
+      - http:
+          path: /register
+          method: post
+          cors: true
+  search:
+    handler: search/search.handler
+    memorySize: 256
+    events:
+      - http:
+          path: /search
+          method: post
+          cors: true
+
+resources:
+  Resources:
+    Users:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Users
+        AttributeDefinitions:
+          - AttributeName: user
+            AttributeType: S
+        KeySchema:
+          - AttributeName: user
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

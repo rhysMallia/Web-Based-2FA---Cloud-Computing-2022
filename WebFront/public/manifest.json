@@ -1,0 +1,43 @@
+{
+  "short_name": "Metagotchi",
+  "name": "Metagotchi",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "Full-Logo2.png",
+      "type": "image/png",
+      "sizes": "2840x1820",
+      "purpose": "any"
+    },
+    {
+      "src": "512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "banner.gif",
+      "type": "image/gif",
+      "sizes": "960x540",
+      "purpose": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
