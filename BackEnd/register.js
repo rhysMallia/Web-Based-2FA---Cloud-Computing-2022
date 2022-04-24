@@ -33,39 +33,29 @@ exports.handler = async (event, context, callback) => {
         {
             if("user" in requestBody)
             {
-                /** 
-                let secret = "";
-                let url = "";
-
                 //check if the user is already present in the database
                 var params = 
                 {
                     user: requestBody.user
                 }
                 
-                //scan DB for user
+                //Find the user in the DB
                 let data = await docClient.get
                 ({
                     TableName,
-                    Key:params  
+                    Key: params
                 }).promise().catch(error => 
                 {
-                    callback(new Error("Couldn't fetch user."))
+                    console.error(Error);
                 })
-
-                if("secret" in data.Item && "url" in data.Item)
-                {
-                    secret = data.Item.secret;
-                    url = data.Item.url;
-                }
-                else
+                if( typeof data.Item !== 'undefined' && data.Item)
                 {
                     callback(null,
                         {
                             statusCode: 200,
                             body: JSON.stringify(
                                 {
-                                    user: "not available"
+                                    user: "true"
                                 }
                             ),
                             headers:
@@ -74,38 +64,41 @@ exports.handler = async (event, context, callback) => {
                             }
                         }
                     );
-                } */ 
-                //if user was not found in the DB
-                let temp_secret = speakeasy.generateSecret();
-                //Generate the database entry
-                var params =
-                {
-                    user: requestBody.user,
-                    secret: temp_secret.base32,
-                    url: temp_secret.otpauth_url
                 }
-                //Put into the DB
-                await docClient.put
-                ({
-                    TableName,
-                    Item: params
-                }).promise();
-                //Send the user ID and Base32 back to the user
-                callback(null,
+                else
+                {
+                    //if user was not found in the DB
+                    let temp_secret = speakeasy.generateSecret();
+                    //Generate the database entry
+                    var params =
                     {
-                        statusCode: 200,
-                        body: JSON.stringify(
-                            {
-                                secret: temp_secret.base32,
-                                url: temp_secret.otpauth_url
-                            }
-                        ),
-                        headers:
-                        {
-                            'Access-Control-Allow-Origin': '*',
-                        }
+                        user: requestBody.user,
+                        secret: temp_secret.base32,
+                        url: temp_secret.otpauth_url
                     }
-                );
+                    //Put into the DB
+                    await docClient.put
+                    ({
+                        TableName,
+                        Item: params
+                    }).promise();
+                    //Send the user ID and Base32 back to the user
+                    callback(null,
+                        {
+                            statusCode: 200,
+                            body: JSON.stringify(
+                                {
+                                    secret: temp_secret.base32,
+                                    url: temp_secret.otpauth_url
+                                }
+                            ),
+                            headers:
+                            {
+                                'Access-Control-Allow-Origin': '*',
+                            }
+                        }
+                    );
+                }
             }
             else
             {

@@ -63,14 +63,6 @@ functions:
           path: /search
           method: post
           cors: true
-  register:
-    handler: register/register.handler
-    memorySize: 256
-    events:
-      - http:
-          path: /register
-          method: post
-          cors: true
 
 resources:
   Resources:
