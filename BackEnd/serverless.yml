@@ -5,7 +5,7 @@
 # uses to deploy your code to your provider of choice
 
 # The `service` block is the name of the service
-service: BotDeploy
+service: CloudComputingDeploy
 
 frameworkVersion: '3'
 
@@ -41,7 +41,7 @@ provider:
 functions:
   verify:
     handler: verify/verify.handler
-    memorySize: 128
+    memorySize: 256
     events:
       - http:
           path: /verify
@@ -61,6 +61,14 @@ functions:
     events:
       - http:
           path: /search
+          method: post
+          cors: true
+  register:
+    handler: register/register.handler
+    memorySize: 256
+    events:
+      - http:
+          path: /register
           method: post
           cors: true
 

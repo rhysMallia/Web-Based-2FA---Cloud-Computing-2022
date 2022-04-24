@@ -12,7 +12,7 @@ import Home from './views/Home';
 import Test from './views/Test';
 
 // Initialize Google Analytics process.env.REACT_APP_GA_CODE
-ReactGA.initialize("UA-224921195-1");
+ReactGA.initialize();
 
 //web view
 
@@ -41,7 +41,6 @@ const App = () => {
       children={() => (
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
-          <AppRoute exact path="/testing" component={Test} layout={LayoutTesting}/>
         </Switch>
       )} />
   );

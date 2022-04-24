@@ -1,38 +1,26 @@
 {
-  "short_name": "Metagotchi",
-  "name": "Metagotchi",
+  "short_name": "Reid2FA",
+  "name": "Reid 2FA",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64",
+      "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "lock96.png",
       "type": "image/png",
-      "sizes": "64x64"
+      "sizes": "96x96"
     },
     {
-      "src": "logo512.png",
+      "src": "lock144.png",
       "type": "image/png",
-      "sizes": "64x64"
+      "sizes": "144x144"
     },
     {
-      "src": "Full-Logo2.png",
+      "src": "lock240.png",
       "type": "image/png",
-      "sizes": "2840x1820",
-      "purpose": "any"
-    },
-    {
-      "src": "512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any"
-    },
-    {
-      "src": "banner.gif",
-      "type": "image/gif",
-      "sizes": "960x540",
+      "sizes": "240x240",
       "purpose": "any"
     }
   ],
