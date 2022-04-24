@@ -2,11 +2,16 @@
   "name": "Reid2FA",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": "16.14.0"
+  },
   "dependencies": {
     "aws-sdk": "^2.1116.0",
     "axios": "^0.26.1",
     "classnames": "^2.2.6",
     "express": "^4.17.3",
+    "gulp-zip": "^5.1.0",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-device-detect": "^2.1.2",
@@ -14,7 +19,7 @@
     "react-ga": "^2.7.0",
     "react-player": "^2.10.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.4",
     "sass": "^1.49.7",
     "serverless": "^3.14.0",
     "web3": "^1.7.3"
@@ -43,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
   }
 }
