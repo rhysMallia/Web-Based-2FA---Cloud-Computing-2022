@@ -58,39 +58,10 @@ exports.handler = async (event, context, callback) => {
                             token: requestBody.token
                         }
                     )
-                    
-
-                        /**
-                         * 
-                         * don't save the URL, delete as soon as they validate - NEED VERIFY FUNCTION
-                         * 
-                         * 
-                         * 
-                         */
-
-
 
                     //If verified, update the DB (removed) and return a successful code
                     if(verified)
                     {
-                        /** 
-                        //update user params (maybe remove to save operations?)
-                        let params =
-                        {
-                            user: data.user,
-                            secret: data.secret,
-                            url: data.url
-                        }
-                        
-                        //put back into DB (redundent?)
-                        await docClient.put
-                        (
-                            {
-                                TableName,
-                                Item: params
-                            }
-                        ).promise(); */
-                            
                         //Return successful status code
                        callback(null,
                             {
