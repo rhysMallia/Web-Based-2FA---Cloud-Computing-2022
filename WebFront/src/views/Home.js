@@ -1,7 +1,9 @@
 import React from 'react';
 import Hero from '../components/sections/Hero';
+import background from '../assets/images/background.jpg'
 
 const Home = () => {
+  return(
       <div style = {{
         background: `url(${background})`,
         backgroundRepeat: 'no-repeat',
@@ -10,6 +12,6 @@ const Home = () => {
         }}>  
         <Hero/>
         </div>
-}
+  );}
 
 export default Home;

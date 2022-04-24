@@ -72,33 +72,13 @@ const Hero = ({
         <div className={innerClasses} id="Home">  
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-              <Image
-              src={require('./../../assets/images/Logo/Full-Logo_Animated.gif')}
-              alt="Full logo"
-              width={896}
-              height={504} />
             </h1>
             <div className="split-item-content center-content-mobile"style={{
-              borderWidth: '20%',
-              borderStyle: 'solid',
-              borderImage: 'url("./Frame (2).png")',
-              borderImageSlice: '80% 45%',
-              borderImageRpeat:'stretch',
-              borderImageWidth: '100%',
-              margin: '8%',
-              marginTop:'32%',
-              paddingTop: "8%",
-              paddingBottom: '10%',
-              paddingLeft: '4%',
-              paddingRight: '4%'
+              backgroundColor:"white",
+              minHeight:"40%",
+              minWidth: "40%"
             }}>      
               <div className="reveal-from-bottom" data-reveal-delay="600">
-              <Image
-              src={require('./../../assets/images/headings/About-Us2.png')}
-              alt="About us!"
-              style={{marginBottom: '32px'}}
-
-              />
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
               Crash landed on earth after their planet was destroyed, the Gotchi's need your companionship to survive...
               </p>

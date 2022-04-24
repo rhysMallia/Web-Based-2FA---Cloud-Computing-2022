@@ -163,17 +163,17 @@ const Header = ({
 
                     </div>  
                     <Link to={{ pathname: "http://www.google.com.au" }} target="_blank" onClick={home}>
-                      {!toggledHome &&  
+                      {!toggleHome &&  
                       <Image
-                        src={require({Home})}
+                        src={require('./../../assets/images/buttons/CCHome.png')}
                         alt="Open"
                         width={32}
                         height={32} />
                       }
                       
-                      {toggledHome &&
+                      {toggleHome &&
                         <Image
-                        src={require({HomePressed})}
+                        src={require('./../../assets/images/buttons/CCHomePressed.png')}
                         alt="Open"
                         width={32}
                         height={32} />
@@ -185,17 +185,17 @@ const Header = ({
                       `list-reset header-nav-right`
                     )}>
                       <Link to="#0" onClick={home}> 
-                        {!toggledHome &&
+                        {!toggleHome &&
                         <Image
-                        src={require('./../../assets/images/Buttons/Home.png')}
+                        src={require('./../../assets/images/buttons/CCHome.png')}
                         alt="Open"
                         width={128}
                         height={60} />
                         }
                       
-                        {toggledHome &&
+                        {toggleHome &&
                         <Image
-                        src={require('./../../assets/images/Buttons/Home_Pressed.png')}
+                        src={require('./../../assets/images/buttons/CCHomePressed.png')}
                         alt="Open"
                         width={128}
                         height={60} />

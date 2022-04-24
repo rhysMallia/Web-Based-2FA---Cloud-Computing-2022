@@ -16,7 +16,7 @@
 
 // Hero illustration
 .illustration-section-01::after {
-	@include illustration('Background.svg', 100%, 100%, top);
+	@include illustration('background.jpg', 100%, 100%, top);
 }
 
 // Features illustration 02
