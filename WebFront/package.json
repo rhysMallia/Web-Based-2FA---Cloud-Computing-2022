@@ -13,6 +13,7 @@
     "express": "^4.17.3",
     "gulp-zip": "^5.1.0",
     "lodash": "^4.17.15",
+    "md5": "^2.3.0",
     "react": "^16.13.1",
     "react-device-detect": "^2.1.2",
     "react-dom": "^16.13.1",

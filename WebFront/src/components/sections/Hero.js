@@ -9,7 +9,7 @@ import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, Link
 TelegramIcon, TelegramShareButton, EmailIcon, EmailShareButton, RedditIcon, RedditShareButton,
 WhatsappIcon, WhatsappShareButton, WeiboIcon, WeiboShareButton, HatenaShareButton, HatenaIcon,
 LivejournalIcon, LivejournalShareButton } from 'react-share';
-import { set } from 'lodash';
+var md5 = require('md5');
 
 const axios = require('axios').default;
 const sea = 'https://buyv1qn071.execute-api.ap-southeast-2.amazonaws.com/dev/search';
@@ -40,12 +40,14 @@ const Hero = ({
   const[state, setState] = useState({
     username: "",
     token: "",
-    shareString: "Test",
+    shareString: "",
     hashtag: "Reid2FA",
+    hashTest: "",
   });
   //Display
   const[error, setError] = useState("");
   const[error2, setError2] = useState("");
+  const[hash, setHash] = useState("");
 
   //components
   const[login, setLogin] = useState();
@@ -54,8 +56,9 @@ const Hero = ({
   const[share, setShare] = useState();
 
   //social media
-  const url = "http://reid.industries";
+  const url = "http://mallia.link";
   const hashtag = "Reid 2FA"
+  var test = ""
 
   //Changing state
   const handleChange = e => {
@@ -98,6 +101,18 @@ const Hero = ({
     setLogin(false);
     setSignup(true);
   }
+
+  function createShareString()
+  {
+    let date = new Date().toLocaleString()
+    let hashString = md5(state.username + state.hashtag + state.token + date);
+    let stringTest = "I have been verified on Reid2FA! User: " + state.username + " Hash: " + hashString;
+    console.log(stringTest);
+    setHash(stringTest);
+    setState({hashTest: stringTest})
+    console.log(hash)
+    console.log(state.hashTest)
+  }
   
   //POST related
   async function userFound()
@@ -105,15 +120,16 @@ const Hero = ({
     ClearHouse();
     setError("This user is already registered.");
     setState({username: ""});
-    setError("");
     await delay(S1)
+    setError("");
+    setSignup(true);
   }
 
   async function userFoundInDB()
   {
     setVerify(false);
     setError("User found in DB")
-    await delay(S1)
+    await delay(S1);
     setVerify(true);
     setLogin(false);
     setError("");
@@ -121,15 +137,12 @@ const Hero = ({
 
   async function userNotFoundInDB()
   {
+    setLogin(false);
     setError("User not found in DB")
-  }
-
-  async function sendToLogin()
-  {
-
-    setError2("User Verified! :)")
-    await delay(S1)
-    setState({token: ""})
+    await delay(S1);
+    setState({username: ""});
+    setLogin(true);
+    setError("");
   }
 
   async function badToken()
@@ -145,11 +158,13 @@ const Hero = ({
   async function goodToken()
   {
     setVerify(false);
-    setError2(state.username + " Verified.");
+    setError2(state.username + " verified.");
     await delay(S1);
     setShare(true);
+    createShareString();
     setState({token: ""});
     setState({username: ""});
+
   }
   //POST
   async function sendRegistration()
@@ -194,7 +209,6 @@ const Hero = ({
         else
         {
           userNotFoundInDB();
-          clearHouse(S1);
         }
       });
     }
@@ -240,6 +254,7 @@ const Hero = ({
     setError2("")
     setState({username: ""});
     setState({token: ""});
+    setState({hash: ""})
   }
 
   const outerClasses = classNames(
@@ -322,47 +337,47 @@ const Hero = ({
               {share &&
                 <div style ={divider}>
                 
-                <FacebookShareButton url={url} quote={state.shareString} hashtag={state.hashtag}>
+                <FacebookShareButton url={url} quote={hash} hashtag={state.hashtag}>
                 <FacebookIcon size={32} round={true} />
                 </FacebookShareButton>
                 
-                <TwitterShareButton url={url} title={state.shareString} hashtag={state.hashtag}>
+                <TwitterShareButton url={url} title={hash} hashtag={state.hashtag}>
                 <TwitterIcon size={32} round={true} />
                 </TwitterShareButton>
 
-                <LinkedinShareButton url={url} title={state.hashtag} description={state.shareString} summary={'Reid 2Fa'}>
+                <LinkedinShareButton url={url} title={state.hashtag} description={hash} summary={'Reid 2Fa'}>
                 <LinkedinIcon size={32} round={true} />
                 </LinkedinShareButton>
 
-                <TumblrShareButton url={url} title={state.shareString} caption={state.shareString} posttype={'link'}>
+                <TumblrShareButton url={url} title={hash} caption={hash} posttype={'link'}>
                 <TumblrIcon size={32} round={true}/>
                 </TumblrShareButton>
 
-                <TelegramShareButton url={url} title={state.shareString} >
+                <TelegramShareButton url={url} title={hash} >
                 <TelegramIcon size={32} round={true}/>
                 </TelegramShareButton>
 
-                <EmailShareButton subject={url} body={state.shareString}>
+                <EmailShareButton subject={url} body={hash}>
                 <EmailIcon size={32} round={true}/>
                 </EmailShareButton>
 
-                <RedditShareButton url={url} title={state.shareString}>
+                <RedditShareButton url={url} title={hash}>
                 <RedditIcon size={32} round={true}/> 
                 </RedditShareButton> 
 
-                <WhatsappShareButton url={url} title={state.shareString} separator=":: ">
+                <WhatsappShareButton url={url} title={hash} separator=":: ">
                 <WhatsappIcon size={32} round={true}/>
                 </WhatsappShareButton>
 
-                <WeiboShareButton url={url} title={state.shareString}> 
+                <WeiboShareButton url={url} title={hash}> 
                 <WeiboIcon size={32} round={true}/>
                 </WeiboShareButton>
 
-                <HatenaShareButton url={url} title={state.shareString}>
+                <HatenaShareButton url={url} title={hash}>
                 <HatenaIcon size={32} round={true}/>
                 </HatenaShareButton>
 
-                <LivejournalShareButton url={url} title={state.shareString}>
+                <LivejournalShareButton url={url} title={hash}>
                 <LivejournalIcon size={32} round={true}/>
                 </LivejournalShareButton>
                 </div>
