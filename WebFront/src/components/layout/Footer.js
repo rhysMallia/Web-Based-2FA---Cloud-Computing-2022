@@ -58,7 +58,7 @@ const Footer = ({
           <div className="footer-top space-between text-xxs">
           </div>
           <div className="footer-bottom space-between text-xxs invert-order-desktop">
-            <div className="footer-copyright"{... buttonAHoverProps}> {!buttonAisHovering ? "This project was made with love by the Reid Industries. All rights reserved" : 
+            <div className="footer-copyright"{... buttonAHoverProps}> {!buttonAisHovering ? "This project was made by Reid Industries. All rights reserved" : 
             "UwU"} </div>
           </div>
         </div>

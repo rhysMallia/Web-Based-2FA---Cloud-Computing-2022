@@ -162,10 +162,10 @@ const Header = ({
                     <div className="spacer">
 
                     </div>  
-                    <Link to={{ pathname: "http://www.google.com.au" }} target="_blank" onClick={home}>
+                    <Link to={{ pathname: "http://www.google.com.au" }} target="_blank" onClick={button1}>
                       {!toggleHome &&  
                       <Image
-                        src={require('./../../assets/images/buttons/CCHome.png')}
+                        src={require('./../../assets/images/buttons/CCButton1.png')}
                         alt="Open"
                         width={32}
                         height={32} />
@@ -173,7 +173,7 @@ const Header = ({
                       
                       {toggleHome &&
                         <Image
-                        src={require('./../../assets/images/buttons/CCHomePressed.png')}
+                        src={require('./../../assets/images/buttons/CCButton1Pressed.png')}
                         alt="Open"
                         width={32}
                         height={32} />
@@ -189,16 +189,16 @@ const Header = ({
                         <Image
                         src={require('./../../assets/images/buttons/CCHome.png')}
                         alt="Open"
-                        width={128}
-                        height={60} />
+                        width={32}
+                        height={32} />
                         }
                       
                         {toggleHome &&
                         <Image
                         src={require('./../../assets/images/buttons/CCHomePressed.png')}
                         alt="Open"
-                        width={128}
-                        height={60} />
+                        width={32}
+                        height={32} />
                         }
                       </Link>
                   </ul>

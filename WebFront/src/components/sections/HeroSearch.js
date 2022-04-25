@@ -255,28 +255,23 @@ const Hero = ({
     'hero-inner section-inner',
     topDivider && 'has-top-divider',
     bottomDivider && 'has-bottom-divider'
-  );
-  
-  const divider = {
-    backgroundColor: "#cad9e8",
-    minHeight: "10vh",
-    paddingTop: "2vh"
-  }
+  );         
   return (
     <section
       {...props}
       className={outerClasses}
     >
-      <div className="container-sm" style={{
-        minHeight: "20vh",
-        backgroundColor: "#eff2f5"
-      }}>
-        <div className={innerClasses} id="Home" >  
+      <div className="container-sm">
+        <div className={innerClasses} id="Home">  
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
             </h1>
-            <div className="split-item-content center-content-mobile"style ={divider}> 
-              <div style ={divider}>
+            <div className="split-item-content center-content-mobile"style={{
+              backgroundColor:"white",
+              minHeight:"100%",
+              minWidth: "100%"
+            }}> 
+              <div>
                 <button onClick={Login}>
                   Login
                 </button>
@@ -285,7 +280,7 @@ const Hero = ({
                   Register
                 </button>
               </div>
-              <div style ={divider}>
+              <div>
               {login &&
                 <form onSubmit={afterSubmitLog}>
                   <label>
@@ -320,7 +315,7 @@ const Hero = ({
               }
               <h5> {error2} </h5> 
               {share &&
-                <div style ={divider}>
+                <div>
                 
                 <FacebookShareButton url={url} quote={state.shareString} hashtag={state.hashtag}>
                 <FacebookIcon size={32} round={true} />
