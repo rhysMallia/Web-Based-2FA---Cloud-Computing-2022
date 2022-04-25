@@ -9,7 +9,7 @@ import LayoutDefault from './layouts/LayoutDefault';
 import LayoutTesting from './layouts/LayoutTesting';
 // Views 
 import Home from './views/Home';
-import Hash from './views/Hash';
+//import Hash from './views/Hash';
 
 // Initialize Google Analytics process.env.REACT_APP_GA_CODE
 ReactGA.initialize();
@@ -33,7 +33,10 @@ const App = () => {
     childRef.current.init();
     trackPage(page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [location]);
+
+  //          <AppRoute  exact path="/hashs" component={Hash} layout={LayoutDefault} />
 
   return (
     <ScrollReveal
@@ -41,7 +44,7 @@ const App = () => {
       children={() => (
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
-          <AppRoute  exact path="/hashs" component={Hash} layout={LayoutDefault} />
+
         </Switch>
       )} />
   );
